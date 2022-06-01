@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 import { render } from '@test-utils';
 import Header from '../Header';
 import PageContent from '../PageContent';
@@ -13,6 +14,5 @@ describe('PageLayout component', () => {
                 </PageContent>
             </PageLayout>
         );
-        expect(container).toHaveTextContent('Success');
     });
 });

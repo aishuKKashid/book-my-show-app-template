@@ -6,6 +6,7 @@ describe('PageContent component', () => {
         const { container } = render(<PageContent>Demo PageContent</PageContent>);
         expect(container).toMatchSnapshot();
     });
+
     it('should render with loader properly', () => {
         const { container } = render(<PageContent isLoading={true}>Demo PageContent</PageContent>);
         expect(container).toMatchSnapshot();

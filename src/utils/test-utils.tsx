@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 
 export const mockAxios = new MockAdapter(axios);
 
-const WithThemeProvider: FC = (props) => (
+const WithThemeProvider: FC = props => (
     <ThemeProvider theme={defaultTheme}>
         <>
             <ToastContainer position="top-end" />
@@ -18,7 +18,7 @@ const WithThemeProvider: FC = (props) => (
     </ThemeProvider>
 );
 
-const WithRouter: FC = (props) => (
+const WithRouter: FC = props => (
     <MemoryRouter>
         <WithThemeProvider>{props.children}</WithThemeProvider>
     </MemoryRouter>
@@ -33,3 +33,15 @@ export const renderWithRouter = (ui: ReactElement, options?: RenderOptions): Ren
 export * from '@testing-library/react';
 // override render method
 export { customRender as render };
+
+jest.mock('@medlypharmacy/satellite-auth', () => ({
+    ...(jest.requireActual('@medlypharmacy/satellite-auth') as any),
+    useAuthContext: () => ({
+        authState: { isAuthenticated: true, isPending: false, accessToken: { accessToken: 'dummyToken' } },
+        authService: {
+            getUser: jest.fn().mockResolvedValue({
+                email: 'john@email.com'
+            })
+        }
+    })
+}));
