@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import * as Styled from './PageContent.styled';
 import { Props } from './types';
 
-const Component: FC<Props> = (props) => {
+const Component: FC<Props> = props => {
     return (
         <Styled.PageContent {...props}>
             {props.isLoading && (
@@ -19,5 +19,5 @@ const Component: FC<Props> = (props) => {
 
 Component.displayName = 'PageContent';
 export const PageContent: FC<Props> & WithStyle = Object.assign(Component, {
-    Style: Styled.PageContent,
+    Style: Styled.PageContent
 });

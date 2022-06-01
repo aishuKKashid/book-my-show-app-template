@@ -13,6 +13,7 @@ describe('ErrorBoundary component', () => {
         // @ts-ignore
         console.error.mockRestore();
     });
+
     it('should render properly', () => {
         const dummy = jest
             .fn()
